@@ -8,7 +8,7 @@
 > **Notes:**
 > Some files may have configurations for packages not included in this setup. Generally these will not cause problems or decrease the performance of xmonad, but if the extra lines of code bother you, feel free to remove them if you like.
 
-> This configuration is designed around a 1366x768 display resolution. You may need to adjust some variables in the config files for a a 1920x1080 display or other resolutions.
+> This configuration is designed around a 1366x768 display resolution (i.e. laptops). You may need to adjust some settings in config files for 1920x1080 displays or other resolutions.
 
 ## Contents
 
