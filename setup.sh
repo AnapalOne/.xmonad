@@ -19,7 +19,6 @@ bash -c 'yay -S --noconfirm --mflags --skipinteg --answerclean All --answerdiff 
 [[ -d ~/.config/xmonad/ ]] && echo "~/.config/xmonad/ already exists." || (echo "Creating ~/.config/xmonad/ directory.." && bash -c 'mkdir -p ~/.config/xmonad/scripts')
 [[ -d ~/.config/picom ]] && echo "~/.config/picom already exists." || (echo "Creating ~/.config/picom directory.." && bash -c 'mkdir ~/.config/picom')
 [[ -d ~/.config/neofetch ]] && echo "~/.config/neofetch already exists." || (echo "Creating ~/.config/neofetch directory.." && bash -c 'mkdir ~/.config/neofetch')
-[[ -d ~/Pictures/Ascii/ ]] && echo "~/Pictures/Ascii/ already exists." || (echo "Creating ~/Pictures/Ascii/ directory.." && bash -c 'mkdir -p ~/Pictures/Ascii/ ')
 
 # Move configs and files to directories
 echo "Copying xmonad.hs to ~/.xmonad/" && bash -c 'cp xmonad.hs ~/.xmonad/'
@@ -28,7 +27,7 @@ echo "Copying alacritty.yml to ~/.config/alacritty/" && bash -c 'cp config/alacr
 echo "Copying help to ~/.config/xmonad/" && bash -c 'cp files/help ~/.config/xmonad/'
 echo "Copying picom.conf to ~/.config/picom/" && bash -c 'cp config/picom.conf ~/.config/picom/'
 echo "Copying neofetch_config.conf to ~/.config/neofetch/config.conf" && bash -c 'cp config/neofetch_config.conf ~/.config/neofetch/config.conf'
-echo "Copying archlinux.txt to ~/Pictures/Ascii/" && bash -c 'cp files/archlinux.txt ~/Pictures/Ascii/'
+echo "Copying archlinux.txt to ~/.config/neofetch/" && bash -c 'cp files/archlinux.txt ~/.config/neofetch/'
 echo "Copying startup_window.sh to ~/.config/xmonad/scripts/" && bash -c 'cp config/shell/startup_window.sh ~/.config/xmonad/scripts/'
 
 # Add execution permissions to shell scripts

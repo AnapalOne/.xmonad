@@ -234,7 +234,7 @@ myManageHook = composeAll
 
         -- Opens the program only on a specific workspace.
         -- NOTE: It will not work when the workspaces in myWorkspace does not match the doShift command here. 
-        --       To fix this, replace the workspace inside doShift with your renamed workspace.
+        --       Instead, replace the workspace inside doShift with your renamed workspace.
 
         -- ter 
         [ title     =? "alacritty"      --> doShift "<action=xdotool key super+1>\xf120</action>"
