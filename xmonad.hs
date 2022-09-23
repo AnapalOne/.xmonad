@@ -29,6 +29,7 @@ import XMonad.Layout.Grid
 import XMonad.Layout.Spiral
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Spacing
+import XMonad.Layout.Renamed
 
 import XMonad.ManageHook
 import XMonad.Hooks.StatusBar
@@ -125,16 +126,18 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. altMask, xK_Down     ), withFocused $ snapGrow D Nothing)             --
 
     -- // system commands
-    , ((modm,                 xK_b   ), sendMessage ToggleStruts)                                                                -- toggle xmobar to front of screen
-    , ((modm,                 xK_q   ), confirmPrompt logoutPrompt "recompile?" $ spawn "xmonad --recompile; xmonad --restart")  -- recompiles xmonad
-    , ((modm,               xK_Escape), confirmPrompt logoutPrompt "logout?" $ io (exitWith ExitSuccess))                        -- logout from xmonad
-    , ((modm .|. shiftMask, xK_Escape), confirmPrompt logoutPrompt "reboot?" $ spawn "systemctl reboot")                         -- reboot computer
-    , ((0,               xF86XK_Sleep), spawn "systemctl hibernate")                                                             -- sleep mode
-    , ((0,     xF86XK_MonBrightnessUp), spawn "lux -a 5%")
-    , ((0,   xF86XK_MonBrightnessDown), spawn "lux -s 5%")
-    , ((0,    xF86XK_AudioRaiseVolume), spawn "pamixer -i 5")
-    , ((0,    xF86XK_AudioLowerVolume), spawn "pamixer -d 5")
-    , ((0,           xF86XK_AudioMute), spawn "pamixer -t")
+    , ((modm,                 xK_b     ), sendMessage ToggleStruts)                                                                -- toggle xmobar to front of screen
+    , ((modm,                 xK_q     ), confirmPrompt logoutPrompt "recompile?" $ spawn "xmonad --recompile; xmonad --restart")  -- recompiles xmonad
+    , ((modm,               xK_Escape  ), confirmPrompt logoutPrompt "logout?" $ io (exitWith ExitSuccess))                        -- logout from xmonad
+    , ((modm .|. shiftMask, xK_Escape  ), confirmPrompt logoutPrompt "reboot?" $ spawn "systemctl reboot")                         -- reboot computer
+    , ((0,               xF86XK_Sleep  ), spawn "systemctl hibernate")                                                             -- sleep mode
+    , ((0,       xF86XK_MonBrightnessUp), spawn "lux -a 5% -M 936")                                                                -- change brightness
+    , ((0,     xF86XK_MonBrightnessDown), spawn "lux -s 5% -m 50")                                                                 --
+    , ((0,      xF86XK_AudioRaiseVolume), spawn "pamixer -i 10")                                                                   -- change volume
+    , ((0,      xF86XK_AudioLowerVolume), spawn "pamixer -d 10")                                                                   --
+    , ((0,             xF86XK_AudioMute), spawn "pamixer -t")                                                                      --
+    , ((0,           xF86XK_ScreenSaver), spawn "xset dpms force suspend")                                                         -- suspend screen
+
 
     -- // programs
     , ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)                               -- open terminal
@@ -169,7 +172,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 ---------------------------------------------------------
 
 myLayout = avoidStruts
-        (smartBorders Full ||| spacingWithEdge 7 (Full ||| tiled ||| Mirror tiled ||| threecol ||| Mirror threecol ||| Grid ||| spiral (6/7)))
+        (smartBorders Full ||| renamed [CutWordsLeft 1] $ spacingWithEdge 7 (Full ||| tiled ||| Mirror tiled ||| threecol ||| Mirror threecol ||| Grid ||| spiral (6/7)))
   where
      tiled = Tall nmaster delta ratio
      nmaster = 1
